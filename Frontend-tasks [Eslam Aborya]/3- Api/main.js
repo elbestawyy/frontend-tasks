@@ -1,6 +1,6 @@
 var XMLHttpRequest = require("xhr2");
 
-// GET All Users
+
 var xhrAll = new XMLHttpRequest();
 xhrAll.open("GET", "https://jsonplaceholder.typicode.com/users", true);
 xhrAll.onreadystatechange = function () {
@@ -9,8 +9,6 @@ xhrAll.onreadystatechange = function () {
   }
 };
 xhrAll.send();
-
-// GET Single User
 var xhrSingle = new XMLHttpRequest();
 xhrSingle.open("GET", "https://jsonplaceholder.typicode.com/users/1", true);
 xhrSingle.onreadystatechange = function () {
@@ -20,7 +18,6 @@ xhrSingle.onreadystatechange = function () {
 };
 xhrSingle.send();
 
-// POST New User
 var xhrPost = new XMLHttpRequest();
 xhrPost.open("POST", "https://jsonplaceholder.typicode.com/users", true);
 xhrPost.setRequestHeader("Content-type", "application/json; charset=UTF-8");
@@ -39,7 +36,6 @@ xhrPost.send(
   })
 );
 
-// PUT Update User
 var xhrPut = new XMLHttpRequest();
 xhrPut.open("PUT", "https://jsonplaceholder.typicode.com/users/1", true);
 xhrPut.setRequestHeader("Content-type", "application/json; charset=UTF-8");
@@ -59,7 +55,6 @@ xhrPut.send(
   })
 );
 
-// DELETE User
 var xhrDelete = new XMLHttpRequest();
 xhrDelete.open("DELETE", "https://jsonplaceholder.typicode.com/users/1", true);
 xhrDelete.onreadystatechange = function () {
