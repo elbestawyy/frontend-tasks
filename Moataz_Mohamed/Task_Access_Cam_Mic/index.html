@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camera & Microphone Access with HTML</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div class="container">
+        
+        <header>
+            <h1>Camera & Microphone Access</h1>
+        </header>
+        <img src="Screenshot 2025-11-24 034921.png" alt="">
+
+        <div class="content">
+            <div class="limitations">
+                <h2>Important Notes</h2>
+                <ul>
+                    <li>This method works primarily on mobile devices (Android and iOS)</li>
+                    <li>On desktop browsers, this will typically open a file dialog instead</li>
+                    <li>Your browser will ask for permission to access the camera/microphone</li>
+                    <li>For more advanced features, JavaScript would be required</li>
+                    <li>The captured media is saved to your device, not displayed on the page</li>
+                    <li>Recording duration may be limited by your device/browser</li>
+                </ul>
+            </div>
+
+            <h3 class="section-title">Camera Options</h3>
+            <div class="access-options">
+                <div class="option">
+                    <div class="icon">📷</div>
+                    <h3>Take a Photo</h3>
+                    <p>Open your device's camera to take a picture</p>
+                    <input type="file" accept="image/*" capture="environment" title="Click to take a photo">
+                </div>
+
+                <div class="option">
+                    <div class="icon">🎥</div>
+                    <h3>Record a Video</h3>
+                    <p>Open your device's camera to record a video</p>
+                    <input type="file" accept="video/*" capture="camcorder" title="Click to record a video">
+                </div>
+            </div>
+
+            <h3 class="section-title">Microphone Options</h3>
+            <div class="access-options">
+                <div class="option">
+                    <div class="icon">🎤</div>
+                    <h3>Record Audio</h3>
+                    <p>Record audio using your device's microphone</p>
+                    <input type="file" accept="audio/*" capture title="Click to record audio">
+                </div>
+
+                <div class="option">
+                    <div class="icon">🎵</div>
+                    <h3>Record Music</h3>
+                    <p>Record music or other audio content</p>
+                    <input type="file" accept="audio/*" capture title="Click to record music">
+                </div>
+
+           
+            </div>
+
+
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Using the XMLHttpRequest Object</h2>
+
+<div id="demo">
+<button type="button" onclick="loadXMLDoc()">GET Request</button>
+</div>
+
+<h2>Send User Data</h2>
+<button id="sendBtn">Send POST Request</button>
+<pre id="response"></pre>
+
+
+<script>
+function loadXMLDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      const json = JSON.parse(this.responseText);
+      document.getElementById("demo").innerHTML =
+        "<pre>" + JSON.stringify(json, null, 2) + "</pre>";
+    }
+  };
+  xhttp.open("GET", "https://jsonplaceholder.typicode.com/users", true);
+  xhttp.send();
+}
+
+document.getElementById("sendBtn").addEventListener("click", () => {
+  // Data to send
+  const data = {
+    title: 'foo',
+    body: 'bar',
+    userId: 1,
+  };
+
+  // Create XMLHttpRequest
+  const xhttp = new XMLHttpRequest();
+
+  // Define what happens on successful data submission
+  xhttp.onreadystatechange = function() {
+    if (this.readyState === 4) {
+      if (this.status === 201 || this.status === 200) {
+        document.getElementById("response").textContent =
+          "Response:\n" + this.responseText;
+      } else {
+        document.getElementById("response").textContent =
+          "Error: " + this.status;
+      }
+    }
+  };
+
+  // Open POST request
+  xhttp.open("POST", "https://jsonplaceholder.typicode.com/posts", true);
+
+  // Set request header to send JSON
+  xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+
+  // Send the request with JSON data
+  xhttp.send(JSON.stringify(data));
+});
+
+</script>
+
+</body>
+</html>
