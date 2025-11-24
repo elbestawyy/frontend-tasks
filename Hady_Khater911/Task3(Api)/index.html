@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTTP Request Demo</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>HTTP Request Demo</h1>
+
+      <div class="controls">
+        <button id="getBtn">GET</button>
+        <button id="postBtn">POST</button>
+        <button id="putBtn">PUT</button>
+        <button id="deleteBtn">DELETE</button>
+      </div>
+
+      <div class="input-group">
+        <label for="dataInput">Data for POST/PUT:</label>
+        <input type="text" id="titleInput" placeholder="Enter title" />
+        <input type="text" id="bodyInput" placeholder="Enter body" />
+      </div>
+
+      <div id="output"></div>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>

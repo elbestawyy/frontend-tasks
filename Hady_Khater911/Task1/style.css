@@ -1,0 +1,90 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f8f9fa;
+  line-height: 1.6;
+}
+
+.navbar {
+  padding: 15px 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.navbar-brand {
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.image img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  display: block;
+  border-radius: 0;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+}
+
+@media (max-width: 768px) {
+  .image img {
+    height: 250px;
+  }
+}
+
+section.bg-light {
+  padding: 60px 0;
+}
+
+.row.bg-white {
+  border-radius: 12px;
+  padding: 30px !important;
+  transition: 0.3s ease;
+}
+
+.row.bg-white:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  transform: translateY(-3px);
+}
+
+.row.bg-white h2 {
+  font-weight: 700;
+  color: #333;
+}
+
+.row.bg-white p {
+  font-size: 15px;
+  color: #555;
+}
+
+.row.bg-white img {
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+footer {
+  margin-top: 40px;
+  background: #f1f1f1 !important;
+  color: #444;
+}
+
+footer h6 {
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+footer p, footer a {
+  color: #666 !important;
+  font-size: 14px;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+footer .p-4 {
+  font-size: 14px;
+}
