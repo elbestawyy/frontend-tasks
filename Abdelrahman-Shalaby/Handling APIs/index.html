@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <script>
+        //-----------GET------
+        const getXhr = new XMLHttpRequest();
+        getXhr.open("GET", "https://jsonplaceholder.typicode.com/posts", true);
+        getXhr.onload = () => console.log("GET:", JSON.parse(getXhr.responseText));
+        getXhr.send();
+
+        //---------Post-------
+        const postXhr = new XMLHttpRequest();
+        postXhr.open("POST", "https://jsonplaceholder.typicode.com/posts", true);
+        postXhr.setRequestHeader("Content-Type", "application/json");
+
+        postXhr.onload = () => console.log("POST:", JSON.parse(postXhr.responseText));
+
+        postXhr.send(JSON.stringify({
+            title: "test titllllllle",
+            body: "Hello from JSONPlaceholder",
+            userId: 100
+        }));
+        //--------PUT-----------
+        const putXhr = new XMLHttpRequest();
+        putXhr.open("PUT", "https://jsonplaceholder.typicode.com/posts/1", true);
+
+        putXhr.setRequestHeader("Content-Type", "application/json");
+
+        putXhr.onload = () => console.log("PUT:", JSON.parse(putXhr.responseText));
+
+        const updatedData = JSON.stringify({
+            id: 1,
+            title: "updated title2",
+            body: "updated content",
+            userId: 1
+        });
+
+        putXhr.send(updatedData);
+
+        //------------Delete-----------
+
+        const deletexhr = new XMLHttpRequest();
+
+        deletexhr.open("DELETE", "https://jsonplaceholder.typicode.com/posts/2", true);
+
+        deletexhr.onload = function () {
+            if (deletexhr.status === 200) {
+                console.log("DELETE Result: Item deleted (simulation)");
+            } else {
+                console.error("DELETE Error:", deletexhr.status);
+            }
+        };
+
+        deletexhr.send();
+
+
+    </script>
+
+</body>
+
+</html>
