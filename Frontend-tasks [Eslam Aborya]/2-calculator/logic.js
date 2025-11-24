@@ -39,11 +39,9 @@ style.textContent = `    body {
     }`;
 document.head.appendChild(style);
 
-// Create calculator container
 const calculator = document.createElement("div");
 calculator.className = "calculator";
 
-// Inputs
 const num1 = document.createElement("input");
 num1.type = "text";
 num1.placeholder = "First number";
@@ -52,7 +50,6 @@ const num2 = document.createElement("input");
 num2.type = "text";
 num2.placeholder = "Second number";
 
-// Buttons
 const addButton = document.createElement("button");
 addButton.textContent = "+";
 
@@ -65,12 +62,11 @@ multiplyButton.textContent = "*";
 const divideButton = document.createElement("button");
 divideButton.textContent = "/";
 
-// Result
+
 const result = document.createElement("div");
 result.className = "result";
 result.textContent = "Result: ";
 
-// Append elements to calculator
 calculator.appendChild(num1);
 calculator.appendChild(num2);
 calculator.appendChild(addButton);
@@ -79,10 +75,8 @@ calculator.appendChild(multiplyButton);
 calculator.appendChild(divideButton);
 calculator.appendChild(result);
 
-// Append calculator to body
 document.body.appendChild(calculator);
 
-// Button events
 addButton.onclick = function () {
 const n1 = parseFloat(num1.value) || 0;
 const n2 = parseFloat(num2.value) || 0;
