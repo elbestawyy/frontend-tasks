@@ -1,0 +1,15 @@
+{
+  "hash": "29230db3",
+  "configHash": "15fef583",
+  "lockfileHash": "70f985e6",
+  "browserHash": "bdd1d73f",
+  "optimized": {
+    "@angular/common/http": {
+      "src": "../../../../../../node_modules/@angular/common/fesm2022/http.mjs",
+      "file": "@angular_common_http.js",
+      "fileHash": "cb3f6eb7",
+      "needsInterop": false
+    }
+  },
+  "chunks": {}
+}
