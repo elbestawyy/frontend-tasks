@@ -1,0 +1,36 @@
+<div class="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg mt-10">
+  <div class="flex justify-between items-center mb-6">
+    <h2 class="text-2xl font-bold text-gray-800">Product List</h2>
+    <a routerLink="/products/create" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">
+      + Create New Product
+    </a>
+  </div>
+
+  <table class="min-w-full border border-gray-200 rounded-lg overflow-hidden">
+    <thead class="bg-gray-100">
+      <tr>
+        <th class="px-6 py-4 text-center text-gray-600 font-medium">Name</th>
+        <th class="px-6 py-4 text-center text-gray-600 font-medium">Price</th>
+        <th class="px-6 py-4 text-center text-gray-600 font-medium">Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let p of products" class="border-t border-gray-200 hover:bg-gray-50">
+        <td class="px-6 py-4 text-center text-gray-700">{{ p.name }}</td>
+        <td class="px-6 py-4 text-center text-gray-700">{{ p.price | currency:'USD' }}</td>
+        <td class="px-6 py-4 flex justify-center gap-2">
+          <a [routerLink]="['/products/edit', p.id]"
+            class="px-3 py-1 bg-yellow-400 text-white rounded hover:bg-yellow-500 transition">
+            Edit
+          </a>
+          <button (click)="deleteProduct(p.id)"
+            class="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 transition">
+            Delete
+          </button>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,18 @@
+
+@if (project(); as p) {
+  <div class="bg-slate-800 rounded-lg overflow-hidden shadow-lg hover:shadow-cyan-500/20 transition-all duration-300 transform hover:-translate-y-1 h-full flex flex-col">
+    <img class="w-full h-48 object-cover" [src]="p.imageUrl" [alt]="p.title">
+    <div class="p-6 flex flex-col flex-grow">
+      <h3 class="text-xl font-bold text-white mb-2">{{ p.title }}</h3>
+      <p class="text-slate-400 text-sm flex-grow">{{ p.description }}</p>
+      <div class="mt-4">
+        <h4 class="text-sm font-semibold text-slate-300 mb-2">Tech Stack:</h4>
+        <div class="flex flex-wrap gap-2">
+          @for (tech of p.techStack; track tech) {
+            <span class="bg-cyan-900/50 text-cyan-300 text-xs font-semibold px-2.5 py-1 rounded-full">{{ tech }}</span>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+}

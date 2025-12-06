@@ -1,0 +1,16 @@
+<div class="max-w-md mx-auto p-6 bg-white shadow-md rounded-lg mt-10">
+  <h2 class="text-2xl font-bold mb-4 text-center">Edit Product</h2>
+
+  <div class="flex flex-col gap-4">
+    <input [(ngModel)]="product.name" placeholder="Name" class="border p-2 rounded">
+    <input [(ngModel)]="product.price" type="number" placeholder="Price" class="border p-2 rounded">
+
+    <button (click)="updateProduct()" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition">
+      Update Product
+    </button>
+
+    <a routerLink="/products" class="text-center text-blue-600 hover:underline mt-2">
+      ← Back to Product List
+    </a>
+  </div>
+</div>

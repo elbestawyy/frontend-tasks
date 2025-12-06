@@ -1,0 +1,33 @@
+<section class="flex items-center justify-center min-h-[calc(100vh-12rem)]">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+    <div class="flex justify-center md:justify-end">
+      <div
+        class="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden shadow-2xl shadow-cyan-500/20 ring-4 ring-slate-700">
+        <img class="w-full h-full object-cover" src="ProfilePhoto.jpeg" alt="Mostafa Eid Hassan" />
+      </div>
+    </div>
+    <div class="text-center md:text-left">
+      <h1 class="text-4xl md:text-5xl font-extrabold text-white">
+        Mostafa Eid Hassan
+      </h1>
+      <p class="mt-2 text-xl md:text-2xl font-semibold text-cyan-400">
+        Full Stack Developer
+      </p>
+      <p class="mt-4 max-w-lg text-slate-400">
+        Dedicated and results-oriented Full Stack Developer with expertise in Java Spring and Angular. Currently
+        contributing to innovative projects at NTG Clarity. Passionate about building scalable, high-performance web
+        applications and solving complex problems.
+      </p>
+      <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+        <a routerLink="/projects"
+          class="inline-block bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg transition-transform transform hover:scale-105">
+          View My Projects
+        </a>
+        <a [href]="cvDataUri" download="Mostafa-Eid-Hassan-CV.pdf"
+          class="inline-block bg-slate-700 hover:bg-slate-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg transition-transform transform hover:scale-105">
+          Download CV
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
