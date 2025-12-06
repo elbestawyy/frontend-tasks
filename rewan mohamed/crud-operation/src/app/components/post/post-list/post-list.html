@@ -1,0 +1,27 @@
+<p-fluid >
+  <span class="font-bold mb-2 block">Fluid Container</span>
+  <div class="grid md:grid-cols-3 gap-4 px-6 ">
+     
+    @for ( post of posts ; track $index) {
+      <p-card [style]="{ width: '100%', overflow: 'hidden' }">
+        <ng-template #header>
+          <img
+            alt="Card"
+            class="w-full"
+            src="https://primefaces.org/cdn/primeng/images/card-ng.jpg"
+          />
+        </ng-template>
+        <ng-template #title>{{ post.title }}</ng-template>
+        <p>
+          {{ post.body }}
+        </p>
+        <ng-template #footer>
+          <div class="flex gap-4 mt-1">
+            <p-button label="Delete" (onClick)="deletePost(post.id)" class="w-full " severity="danger" styleClass="w-full" />
+          </div>
+        </ng-template>
+      </p-card>
+    }
+    
+  </div>
+</p-fluid>
