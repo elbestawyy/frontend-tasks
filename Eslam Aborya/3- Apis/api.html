@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create User</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f0f0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 1.8em;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: bold;
+            font-size: 0.95em;
+        }
+        
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 0.95em;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #333;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        }
+        
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #333;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1em;
+            transition: background 0.3s;
+        }
+        
+        button:hover {
+            background: #555;
+        }
+        
+        button:active {
+            background: #222;
+        }
+        
+        .result {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            display: none;
+        }
+        
+        .result.show {
+            display: block;
+            animation: slideIn 0.3s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .result h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+        
+        .result-content {
+            background: white;
+            padding: 15px;
+            border-radius: 4px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            word-break: break-word;
+            font-size: 0.9em;
+            color: #333;
+            line-height: 1.5;
+        }
+        
+        .success {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724;
+        }
+        
+        .error {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24;
+        }
+        
+        .loading {
+            text-align: center;
+            color: #666;
+        }
+        
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #333;
+            border-radius: 50%;
+            animation: spin 0.6s linear infinite;
+            margin-right: 10px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Create New User</h1>
+        
+        <form id="createForm">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" placeholder="Enter username" value="newuser" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" placeholder="Enter email address" value="user@example.com" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">Phone:</label>
+                <input type="text" id="phone" placeholder="Enter phone number" value="123-456-7890">
+            </div>
+            
+            <button type="button" onclick="createUser()">Create User</button>
+        </form>
+        
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        function createUser() {
+            const username = document.getElementById('username').value || 'newuser';
+            const email = document.getElementById('email').value || 'user@example.com';
+            const phone = document.getElementById('phone').value || '123-456-7890';
+            
+            const resultDiv = document.getElementById('result');
+            
+            // Show loading state
+            resultDiv.className = 'result show loading';
+            resultDiv.innerHTML = '<div><span class="spinner"></span>Creating user...</div>';
+            
+            // Simulate user creation
+            setTimeout(function() {
+                const userData = {
+                    id: Math.floor(Math.random() * 10000),
+                    username: username,
+                    email: email,
+                    phone: phone,
+                    createdAt: new Date().toLocaleString()
+                };
+                
+                resultDiv.className = 'result show success';
+                resultDiv.innerHTML = `
+                    <h3>✅ User Created Successfully!</h3>
+                    <div class="result-content">${JSON.stringify(userData, null, 2)}</div>
+                `;
+                
+                console.log("New User:", userData);
+            }, 800);
+        }
+        
+        // Allow Enter key to submit
+        document.getElementById('createForm').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                createUser();
+            }
+        });
+    </script>
+</body>
+</html>

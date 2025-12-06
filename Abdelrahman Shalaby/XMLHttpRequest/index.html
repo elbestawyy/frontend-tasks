@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CRUD XMLHttpRequest</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h2>CRUD XMLHttpRequest</h2>
+
+        <!-- get posts -->
+        <div class="card">
+            <h3>Get All Posts</h3>
+            <button onclick="getPosts()">Load Posts</button>
+            <div id="posts"></div>
+        </div>
+        <!-- --------------------------------------------------------------------------------- -->
+        <div class="card">
+            <h3></h3> Add New Post (POST)</h3>
+
+            <input id="postTitle" placeholder="Title">
+            <input id="postBody" placeholder="Body">
+            <input id="postUser" type="number" placeholder="User ID">
+
+            <button onclick="addPost()">Add Post</button>
+            <div id="postResult"></div>
+        </div>
+        <!-- --------------------------------------------------------------------------------- -->
+        <div class="card">
+            <h3>Update Post (PUT)</h3>
+
+            <input id="putId" type="number" placeholder="Post ID">
+            <input id="putTitle" placeholder="New Title">
+            <input id="putBody" placeholder="New Body">
+
+            <button onclick="updatePost()">Update</button>
+            <div id="putResult"></div>
+        </div>
+    </div>
+
+
+
+
+
+</body>
+
+</html>

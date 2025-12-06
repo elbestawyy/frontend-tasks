@@ -1,0 +1,62 @@
+.crud-container {
+  max-width: 600px;
+  margin: 50px auto;
+  color: rgb(17, 17, 17);
+  font-family: sans-serif;
+}
+
+.input-card {
+  background: #1a1a2e;
+  padding: 20px;
+  border: 1px solid #e94560;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.input-group {
+  margin-bottom: 15px;
+  label { display: block; margin-bottom: 5px; color: #ccc; }
+  input {
+    width: 100%;
+    padding: 10px;
+    background: #0f3460;
+    border: 1px solid #333;
+    color: rgb(246, 241, 241);
+    border-radius: 4px;
+  }
+}
+
+.btn-group {
+  display: flex;
+  gap: 10px;
+  button {
+    padding: 10px 20px;
+    cursor: pointer;
+    background: #e94560;
+    color: white;
+    border: none;
+    width: 100%;
+    font-weight: bold;
+
+    &.update-btn { background: #ffd700; color: black; }
+    &.cancel-btn { background: #555; }
+  }
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  th, td { padding: 10px; border-bottom: 1px solid #333; text-align: left; }
+  th { color: #e94560; }
+  
+  button {
+    background: none;
+    border: 1px solid #555;
+    color: #ccc;
+    margin-right: 5px;
+    cursor: pointer;
+    padding: 5px 10px;
+    
+    &:hover { border-color: #e94560; color: #e94560; }
+  }
+}

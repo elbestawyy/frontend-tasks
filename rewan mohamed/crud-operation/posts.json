@@ -1,0 +1,58 @@
+{
+  "posts": [
+    {
+      "userId": 3,
+      "id": "3",
+      "title": "mdsfbmsndfb fmsbfmnsdf",
+      "body": "Dive into the world of hfgjhsadf Science and discover how to analyze and interpret data.",
+      "link": "https://example.com/article3",
+      "comment_count": 5
+    },
+    {
+      "userId": 8,
+      "id": "8",
+      "title": "rewan Best Practices",
+      "body": "Learn essential cybersecurity practices to safeguard your digital assets.",
+      "link": "https://example.com/article8",
+      "comment_count": 6
+    },
+    {
+      "userId": 10,
+      "id": "10",
+      "title": "Introduction to UX Design",
+      "body": "Discover the principles of User Experience (UX) design and create intuitive user interfaces.",
+      "link": "https://example.com/article10",
+      "comment_count": 21
+    },
+    {
+      "id": "f745",
+      "title": "vvvvvvvvvvvvvvvv",
+      "body": "nnnnnnnnnnn hhhhhhhhhhhhhhh"
+    },
+    {
+      "id": "23a0",
+      "title": "bbbbbbbbb",
+      "body": "hhhhhhhhhhhh hhhhhhhhhhhhhh"
+    },
+    {
+      "id": "c674",
+      "title": "bgjm",
+      "body": "nmbmnbmnb"
+    },
+    {
+      "id": "502f",
+      "title": "kjhkjdshf",
+      "body": "mnsbdmfbsdf smfbsmnfd"
+    },
+    {
+      "id": "1333",
+      "title": "xmcbnzc",
+      "body": "zx cnm zc"
+    },
+    {
+      "id": "178f",
+      "title": "xxxxxxxxxxxxx",
+      "body": "xxxxxxxxxxxxx"
+    }
+  ]
+}

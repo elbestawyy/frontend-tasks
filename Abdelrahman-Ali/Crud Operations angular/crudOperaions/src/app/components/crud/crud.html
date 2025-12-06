@@ -1,0 +1,51 @@
+<div class="crud-container">
+  <h2>User Management</h2>
+
+  <div class="input-card">
+    <div class="input-group">
+      <label>Name:</label>
+      <input type="text" [(ngModel)]="userName" placeholder="Enter name">
+    </div>
+
+    <div class="input-group">
+      <label>Role:</label>
+      <input type="text" [(ngModel)]="userRole" placeholder="Enter role">
+    </div>
+
+    <div class="btn-group">
+      <button (click)="saveUser()" [class.update-btn]="editingId">
+        {{ editingId ? 'Update' : 'Add' }}
+      </button>
+      
+      @if (editingId) {
+        <button (click)="cancelEdit()" class="cancel-btn">Cancel</button>
+      }
+    </div>
+  </div>
+
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Role</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (user of userService.users(); track user.id) {
+          <tr>
+            <td>{{ user.name }}</td>
+            <td>{{ user.role }}</td>
+            <td>
+              <button (click)="onEdit(user)" class="edit-icon">✎</button>
+              <button (click)="onDelete(user.id)" class="delete-icon">🗑</button>
+            </td>
+          </tr>
+        } @empty {
+          <tr><td colspan="3" class="empty">No users found.</td></tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
