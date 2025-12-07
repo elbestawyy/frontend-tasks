@@ -1,0 +1,79 @@
+<div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-md">
+  <h1 class="text-2xl font-bold text-gray-800 mb-6">{{ isEditMode() ? 'Edit Product' : 'Add New Product' }}</h1>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+    <div class="space-y-6">
+      <!-- Title -->
+      <div>
+        <label for="title" class="block text-sm font-medium text-gray-700">Title</label>
+        <input type="text" id="title" formControlName="title" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+        @if (form.get('title')?.invalid && (form.get('title')?.dirty || form.get('title')?.touched)) {
+          <p class="mt-1 text-xs text-red-600">
+            @if (form.get('title')?.errors?.['required']) { Title is required. }
+            @if (form.get('title')?.errors?.['minlength']) { Title must be at least 3 characters long. }
+          </p>
+        }
+      </div>
+
+      <!-- Price -->
+      <div>
+        <label for="price" class="block text-sm font-medium text-gray-700">Price</label>
+        <input type="number" id="price" formControlName="price" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+        @if (form.get('price')?.invalid && (form.get('price')?.dirty || form.get('price')?.touched)) {
+          <p class="mt-1 text-xs text-red-600">
+            @if (form.get('price')?.errors?.['required']) { Price is required. }
+            @if (form.get('price')?.errors?.['min']) { Price must be greater than 0. }
+          </p>
+        }
+      </div>
+
+      <!-- Image URL -->
+      <div>
+        <label for="image" class="block text-sm font-medium text-gray-700">Image URL</label>
+        <input type="text" id="image" formControlName="image" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+        @if (form.get('image')?.invalid && (form.get('image')?.dirty || form.get('image')?.touched)) {
+          <p class="mt-1 text-xs text-red-600">
+            @if (form.get('image')?.errors?.['required']) { Image URL is required. }
+            @if (form.get('image')?.errors?.['pattern']) { Please enter a valid URL. }
+          </p>
+        }
+      </div>
+
+      <!-- Description -->
+      <div>
+        <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
+        <textarea id="description" formControlName="description" rows="4" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
+        @if (form.get('description')?.invalid && (form.get('description')?.dirty || form.get('description')?.touched)) {
+          <p class="mt-1 text-xs text-red-600">
+            @if (form.get('description')?.errors?.['required']) { Description is required. }
+            @if (form.get('description')?.errors?.['minlength']) { Description must be at least 10 characters long. }
+          </p>
+        }
+      </div>
+    </div>
+
+    @if (error()) {
+      <div class="mt-6 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+        <strong class="font-bold">Error:</strong>
+        <span class="block sm:inline">{{ error() }}</span>
+      </div>
+    }
+
+    <div class="mt-8 flex justify-end space-x-4">
+      <button type="button" (click)="router.navigate(['/products'])" class="px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300 transition-colors">
+        Cancel
+      </button>
+      <button type="submit" [disabled]="form.invalid || loading()" class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors disabled:bg-indigo-300 disabled:cursor-not-allowed flex items-center">
+        @if (loading()) {
+          <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+          Processing...
+        } @else {
+          <span>{{ isEditMode() ? 'Update Product' : 'Add Product' }}</span>
+        }
+      </button>
+    </div>
+  </form>
+</div>
