@@ -1,89 +1,89 @@
-import { Component, ChangeDetectionStrategy, inject, signal } from '@angular/core';
+import { Component, ChangeDetectionStrategy, effect, input, output, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { ProductService } from '../../services/product.service';
-import { switchMap, of } from 'rxjs';
-import 'tslib'; // Added import for tslib
+
 @Component({
   selector: 'app-product-form',
-  imports: [CommonModule, ReactiveFormsModule], // Removed Validators from imports
+  imports: [CommonModule], // No ReactiveFormsModule or FormsModule needed
   templateUrl: './product-form.html',
   styleUrl: './product-form.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductForm {
-  private fb = inject(FormBuilder);
-  private route = inject(ActivatedRoute);
-  private router = inject(Router);
-  private productService = inject(ProductService);
+  // --- Inputs / Outputs ---
+  product = input<any | null>(null);
+  loading = input<boolean>(false);
+  errorMessage = input<string | null>(null);
 
-  form = this.fb.group({
-    title: ['', [Validators.required, Validators.minLength(3)]],
-    price: [0, [Validators.required, Validators.min(0.01)]],
-    description: ['', [Validators.required, Validators.minLength(10)]],
-    image: ['', [Validators.required, Validators.pattern('https?://.+')]],
-    category: ['electronics', Validators.required]
-  });
+  save = output<any>();
+  cancel = output<void>();
 
-  productId = signal<number | null>(null);
-  isEditMode = signal<boolean>(false);
-  loading = signal<boolean>(false);
-  error = signal<string | null>(null);
+  // --- State Signals (Manual Field Management) ---
+  title = signal('');
+  price = signal<number>(0);
+  image = signal('');
+  description = signal('');
+  category = signal('electronics');
+
+  // Helper to trigger error display only after clicking submit
+  showErrors = signal(false);
 
   constructor() {
-    this.route.paramMap.pipe(
-      switchMap((params: { get: (arg0: string) => any; }) => {
-        const id = params.get('id');
-        if (id) {
-          this.isEditMode.set(true);
-          this.productId.set(Number(id));
-          this.loading.set(true);
-          return this.productService.getProduct(Number(id));
-        }
-        return of(null);
-      })
-    ).subscribe({
-      next: (product: any) => {
-        if (product) {
-          this.form.patchValue(product);
-        }
-        this.loading.set(false);
-      },
-      error: () => {
-        this.error.set('Failed to load product data.');
-        this.loading.set(false);
+    // Reset or Fill fields when the 'product' input changes
+    effect(() => {
+      const p = this.product();
+      if (p) {
+        this.title.set(p.title || '');
+        this.price.set(p.price || 0);
+        this.image.set(p.image || '');
+        this.description.set(p.description || '');
+        this.category.set(p.category || 'electronics');
+      } else {
+        // Reset fields for new product
+        this.title.set('');
+        this.price.set(0);
+        this.image.set('');
+        this.description.set('');
+        this.category.set('electronics');
       }
+      this.showErrors.set(false);
     });
   }
 
-  onSubmit(): void {
-    if (this.form.invalid) {
-      this.form.markAllAsTouched();
-      return;
-    }
+  // --- Manual Validation Logic ---
+  get isTitleInvalid() { return !this.title() || this.title().length < 3; }
+  get isPriceInvalid() { return !this.price() || this.price() <= 0; }
+  get isImageInvalid() { return !this.image() || !/^https?:\/\/.+/.test(this.image()); }
+  get isDescInvalid()  { return !this.description() || this.description().length < 10; }
 
-    this.loading.set(true);
-    this.error.set(null);
-    const productData = {
-      title: this.form.value.title || '',
-      price: this.form.value.price || 0,
-      description: this.form.value.description || '',
-      image: this.form.value.image || '',
-      category: this.form.value.category || 'electronics'
+  get isFormInvalid() {
+    return this.isTitleInvalid || this.isPriceInvalid || this.isImageInvalid || this.isDescInvalid;
+  }
+
+  // --- Actions ---
+  onSubmit(event: Event) {
+    event.preventDefault(); // Prevent standard browser submit
+    this.showErrors.set(true);
+
+    if (this.isFormInvalid) return;
+
+    const payload = {
+      title: this.title(),
+      price: this.price(),
+      description: this.description(),
+      image: this.image(),
+      category: this.category()
     };
 
-    const operation = this.isEditMode()
-      ? this.productService.updateProduct(this.productId()!, productData)
-      : this.productService.createProduct(productData);
-
-    operation.subscribe({
-      next: () => this.router.navigate(['/products']),
-      error: (err: any) => {
-        this.error.set('Failed to save product. Please try again.');
-        this.loading.set(false);
-        console.error(err);
-      }
-    });
+    this.save.emit(payload);
   }
+
+  onCancel() {
+    this.cancel.emit();
+  }
+
+  // --- Event Handlers for Inputs ---
+  updateTitle(e: Event) { this.title.set((e.target as HTMLInputElement).value); }
+  updatePrice(e: Event) { this.price.set(Number((e.target as HTMLInputElement).value)); }
+  updateImage(e: Event) { this.image.set((e.target as HTMLInputElement).value); }
+  updateDesc(e: Event)  { this.description.set((e.target as HTMLTextAreaElement).value); }
 }
