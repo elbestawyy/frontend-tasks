@@ -1,0 +1,24 @@
+#hero {
+  min-height: 90vh; display: grid; grid-template-columns: 1fr 1fr;
+  align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 2rem;
+}
+.greeting { color: var(--primary); font-weight: 600; letter-spacing: 1px; }
+h1 { font-size: 4rem; line-height: 1.1; margin: 0.5rem 0; color: var(--secondary); }
+.role { font-size: 1.5rem; color: #64748b; margin-bottom: 1.5rem; }
+.bio { max-width: 500px; line-height: 1.6; margin-bottom: 2rem; color: var(--text); }
+
+.buttons {
+  display: flex; gap: 1rem;
+  .btn {
+    text-decoration: none; padding: 0.8rem 1.5rem; border-radius: 8px; font-weight: 600; transition: 0.3s;
+    &.primary { background: var(--primary); color: white; }
+    &.outline { border: 2px solid var(--primary); color: var(--primary); }
+    &:hover { transform: translateY(-3px); }
+  }
+}
+.blob {
+  width: 400px; height: 400px; background: linear-gradient(45deg, var(--primary), #818cf8);
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; animation: morph 6s infinite ease-in-out;
+}
+@keyframes morph { 0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; } 50% { border-radius: 70% 30% 30% 70% / 70% 30% 30% 70%; } }
+@media(max-width: 768px) { #hero { grid-template-columns: 1fr; text-align: center; } .visual { display: none; } .buttons { justify-content: center; } }
