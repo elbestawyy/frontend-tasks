@@ -1,0 +1,109 @@
+/* Container */
+.container {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 30px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #fdfdfd;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading */
+h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Inputs and textarea */
+input,
+textarea {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  transition: border 0.3s;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Buttons */
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.buttons button {
+  flex: 1;
+  min-width: 100px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s;
+  color: #fff;
+}
+
+/* Different colors for each action */
+.buttons button:nth-child(1) { background-color: #28a745; } /* Create */
+.buttons button:nth-child(2) { background-color: #17a2b8; } /* Read */
+.buttons button:nth-child(3) { background-color: #ffc107; color: #333; } /* Update */
+.buttons button:nth-child(4) { background-color: #dc3545; } /* Delete */
+
+.buttons button:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+/* Selected post box */
+.result {
+  background-color: #f4f8ff;
+  padding: 18px;
+  border-radius: 10px;
+  border-left: 5px solid #007bff;
+  margin-bottom: 25px;
+}
+
+/* List of posts */
+h3 {
+  color: #444;
+  margin-bottom: 10px;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+li {
+  background-color: #f9f9f9;
+  padding: 12px 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border-left: 5px solid #17a2b8;
+  transition: 0.3s;
+}
+
+li:hover {
+  background-color: #e6f2ff;
+  transform: translateX(3px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 500px) {
+  .buttons {
+    flex-direction: column;
+  }
+}

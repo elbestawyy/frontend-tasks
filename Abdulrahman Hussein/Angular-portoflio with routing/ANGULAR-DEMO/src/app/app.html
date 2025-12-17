@@ -1,0 +1,35 @@
+<div class = 'min-h-screen flex flex-col'>
+<header>
+<nav class="fixed top-0 right-0 left-0 z-[9999] bg-gray-100 shadow">
+<div class="container mx-auto flex items-center justify-between p-4">
+<a class="text-xl font-bold" href="#"><img class="angular-img" src="favicon.ico" alt="toto"></a>
+
+
+<button class="lg:hidden p-2 border rounded" onclick="document.getElementById('navContent').classList.toggle('hidden')">
+☰
+</button>
+
+
+<div id="navContent" class="hidden lg:flex w-full lg:w-auto">
+<ul class="flex flex-col lg:flex-row gap-4 lg:gap-8 mt-4 lg:mt-0">
+<li><a routerLink="/" routerLinkActive="text-blue-600 font-bold" class="text-blue-900 font-semibold">LANDSCAPE</a></li>
+<li><a routerLink="/about" routerLinkActive="text-blue-600 font-bold" class="text-blue-900 font-semibold">ABOUT</a></li>
+</ul>
+</div>
+</div>
+</nav>
+</header>
+
+<main class="flex-1">
+  <router-outlet></router-outlet>
+</main>
+
+<footer id="hendy4" class="footer-bg text-white p-6 flex flex-col">
+<ul class="list-none space-y-2">
+<li>01096335035</li>
+<li>Ahussein@NTGclarity.com</li>
+<li>171 Haram st. - Giza</li>
+</ul>
+<p class="mt-auto text-center">all the rights are reserved by me 2002-2025</p>
+</footer>
+</div>

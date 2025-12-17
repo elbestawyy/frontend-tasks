@@ -1,0 +1,30 @@
+
+import { Routes } from '@angular/router';
+
+export const APP_ROUTES: Routes = [
+  {
+    path: 'products',
+    loadComponent: () => import('./pages/product-list/product-list').then(m => m.ProductList)
+  },
+  {
+    path: 'products/:id',
+    loadComponent: () => import('./pages/product-details/product-details').then(m => m.ProductDetails)
+  },
+  {
+    path: 'add-product',
+    loadComponent: () => import('./pages/product-form/product-form').then(m => m.ProductForm)
+  },
+  {
+    path: 'edit-product/:id',
+    loadComponent: () => import('./pages/product-form/product-form').then(m => m.ProductForm)
+  },
+  {
+    path: '',
+    redirectTo: 'products',
+    pathMatch: 'full'
+  },
+  {
+    path: '**',
+    redirectTo: 'products'
+  }
+];

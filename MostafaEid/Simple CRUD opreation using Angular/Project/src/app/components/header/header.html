@@ -1,0 +1,31 @@
+<header class="bg-white shadow-md sticky top-0 z-50">
+  <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <div class="flex items-center">
+        <a [routerLink]="['/']" class="flex-shrink-0 flex items-center gap-2">
+          <svg class="w-8 h-8 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+          </svg>
+          <span class="font-bold text-xl text-gray-800">Productify</span>
+        </a>
+      </div>
+      <div class="flex items-center space-x-4">
+        <div class="relative">
+          <input type="search" placeholder="Search products..." (input)="onSearch($event)"
+            [value]="searchServic.searchTerm()"
+            class="w-40 sm:w-64 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-300" />
+          <svg class="w-5 h-5 text-gray-400 absolute right-3 top-1/2 transform -translate-y-1/2"
+            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </div>
+        <a [routerLink]="['/add-product']"
+          class="hidden sm:inline-block bg-indigo-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-indigo-700 transition-colors duration-300">
+          Add Product
+        </a>
+      </div>
+    </div>
+  </nav>
+</header>

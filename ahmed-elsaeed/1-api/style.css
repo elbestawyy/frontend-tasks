@@ -1,0 +1,9 @@
+.result-box {
+    white-space: pre-wrap;
+    font-size: 0.85rem;
+    min-height: 120px;
+}
+.card {
+    max-width: 550px;
+    margin: auto;
+}

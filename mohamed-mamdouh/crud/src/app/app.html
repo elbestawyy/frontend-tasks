@@ -1,0 +1,31 @@
+<main class="container mx-auto p-4 sm:p-6 lg:p-8">
+  <header class="mb-8 text-center">
+    <h1 class="text-4xl font-extrabold text-gray-800 tracking-tight">
+      Angular User Management
+    </h1>
+    <p class="mt-2 text-lg text-gray-600">A simple CRUD application with Tailwind CSS.</p>
+  </header>
+
+  @if (isLoading()) {
+  <div class="flex justify-center items-center p-10">
+    <div class="animate-spin rounded-full h-16 w-16 border-b-2 border-indigo-600"></div>
+  </div>
+  } @else if (error()) {
+  <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded-md" role="alert">
+    <p class="font-bold">Error</p>
+    <p>{{ error() }}</p>
+  </div>
+  } @else {
+  <app-user-list [users]="users()" (add)="onAddUser()" (edit)="onEditUser($event)" (delete)="onDeleteUser($event)">
+  </app-user-list>
+  }
+
+  @if (showForm()) {
+  <app-user-form [user]="selectedUser()" (save)="onSaveUser($event)" (cancel)="onCancelForm()">
+  </app-user-form>
+  }
+
+  @if (showDeleteConfirm()) {
+  <app-confirm-dialog (confirm)="onConfirmDelete($event)"></app-confirm-dialog>
+  }
+</main>

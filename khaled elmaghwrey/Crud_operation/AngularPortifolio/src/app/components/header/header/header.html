@@ -1,0 +1,81 @@
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="logo">
+      <a routerLink="/">
+        <span class="logo-text">KEM</span>
+        <span class="logo-subtitle">Portfolio</span>
+      </a>
+    </div>
+
+    <ul class="nav-menu">
+      <li class="nav-item">
+        <a routerLink="/" class="nav-link"><i class="fas fa-home"></i> Home</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/about" class="nav-link"><i class="fas fa-user"></i> About</a>
+      </li>
+      <li class="nav-item">
+        <a href="#skills" class="nav-link"><i class="fas fa-code"></i> Skills</a>
+      </li>
+      <li class="nav-item">
+        <a href="#projects" class="nav-link"><i class="fas fa-project-diagram"></i> Projects</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/contact" class="nav-link"><i class="fas fa-envelope"></i> Contact</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<section id="home" class="hero">
+  <div class="hero-content">
+    <div class="hero-text">
+      <h1 class="hero-title">
+        <span class="wave">👋</span> Hi, I'm <span class="highlight">Khaled El Maghwrey</span>
+      </h1>
+      <h2 class="hero-subtitle">Full Stack Developer & Creative Designer</h2>
+      <p class="hero-description">
+        Building exceptional digital experiences with modern technologies. Passionate about clean
+        code, elegant design, and solving complex problems.
+      </p>
+      <div class="hero-buttons">
+        <a routerLink="/contact" class="btn btn-primary">
+          <i class="fas fa-paper-plane"></i> Get In Touch
+        </a>
+        <a href="#projects" class="btn btn-secondary">
+          <i class="fas fa-briefcase"></i> View My Work
+        </a>
+      </div>
+      <div class="hero-social">
+        <a href="https://github.com/khaledelmaghwrey" target="_blank" class="social-icon">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://linkedin.com/in/khaledelmaghwrey" target="_blank" class="social-icon">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://twitter.com/khaledelmaghwrey" target="_blank" class="social-icon">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <div class="floating-card">
+        <div class="code-snippet">
+          <span class="code-line"><span class="keyword">const</span> developer = {{'{'}</span>
+          <span class="code-line"> name: <span class="string">'Khaled'</span>,</span>
+          <span class="code-line">
+            skills: [<span class="string">'Angular'</span>, <span class="string">'Java'</span>,
+            <span class="string">'Python'</span>],</span
+          >
+          <span class="code-line">
+            passion: <span class="string">'Creating Amazing Apps'</span></span
+          >
+          <span class="code-line">{{ '}' }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <i class="fas fa-chevron-down"></i>
+  </div>
+</section>

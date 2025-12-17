@@ -1,0 +1,30 @@
+<div class="container">
+  <h2>Angular CRUD – LocalStorage (User-defined ID)</h2>
+
+  <input type="number" placeholder="Post ID" [(ngModel)]="postId" />
+  <input type="text" placeholder="Title" [(ngModel)]="title" />
+  <textarea placeholder="Body" [(ngModel)]="body"></textarea>
+
+  <div class="buttons">
+    <button (click)="createPost()">Create</button>
+    <button (click)="readPost()">Read</button>
+    <button (click)="updatePost()">Update</button>
+    <button (click)="deletePost()">Delete</button>
+  </div>
+
+  <!-- Selected Post -->
+  <div *ngIf="selectedPost" class="result">
+    <h3>Selected Post</h3>
+    <p><strong>ID:</strong> {{ selectedPost.id }}</p>
+    <p><strong>Title:</strong> {{ selectedPost.title }}</p>
+    <p><strong>Body:</strong> {{ selectedPost.body }}</p>
+  </div>
+
+  <!-- All Posts -->
+  <h3>All Posts</h3>
+  <ul>
+    <li *ngFor="let post of posts">
+      <strong>{{ post.id }} - {{ post.title }}</strong>: {{ post.body }}
+    </li>
+  </ul>
+</div>

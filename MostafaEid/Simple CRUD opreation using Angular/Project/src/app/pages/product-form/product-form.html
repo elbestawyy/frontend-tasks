@@ -1,0 +1,78 @@
+<div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-md">
+  <h1 class="text-2xl font-bold text-gray-800 mb-6">{{ product() ? 'Edit Product' : 'Add New Product' }}</h1>
+
+  <form (submit)="onSubmit($event)">
+    <div class="space-y-6">
+
+      <div>
+        <label for="title" class="block text-sm font-medium text-gray-700">Title</label>
+        <input type="text" id="title" [value]="title()" (input)="updateTitle($event)"
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+
+        @if (showErrors() && isTitleInvalid) {
+        <p class="mt-1 text-xs text-red-600">Title must be at least 3 characters long.</p>
+        }
+      </div>
+
+      <div>
+        <label for="price" class="block text-sm font-medium text-gray-700">Price</label>
+        <input type="number" id="price" [value]="price()" (input)="updatePrice($event)"
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+
+        @if (showErrors() && isPriceInvalid) {
+        <p class="mt-1 text-xs text-red-600">Price must be greater than 0.</p>
+        }
+      </div>
+
+      <div>
+        <label for="image" class="block text-sm font-medium text-gray-700">Image URL</label>
+        <input type="text" id="image" [value]="image()" (input)="updateImage($event)"
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+
+        @if (showErrors() && isImageInvalid) {
+        <p class="mt-1 text-xs text-red-600">Please enter a valid URL (http/https).</p>
+        }
+      </div>
+
+      <div>
+        <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
+        <textarea id="description" rows="4" [value]="description()" (input)="updateDesc($event)"
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
+
+        @if (showErrors() && isDescInvalid) {
+        <p class="mt-1 text-xs text-red-600">Description must be at least 10 characters long.</p>
+        }
+      </div>
+    </div>
+
+    @if (errorMessage()) {
+    <div class="mt-6 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative">
+      <strong class="font-bold">Error:</strong>
+      <span class="block sm:inline">{{ errorMessage() }}</span>
+    </div>
+    }
+
+    <div class="mt-8 flex justify-end space-x-4">
+      <button type="button" (click)="onCancel()"
+        class="px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300 transition-colors">
+        Cancel
+      </button>
+
+      <button type="submit" [disabled]="loading()"
+        class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors disabled:bg-indigo-300 disabled:cursor-not-allowed flex items-center">
+        @if (loading()) {
+        <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
+          viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor"
+            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+          </path>
+        </svg>
+        Processing...
+        } @else {
+        <span>{{ product() ? 'Update Product' : 'Add Product' }}</span>
+        }
+      </button>
+    </div>
+  </form>
+</div>
