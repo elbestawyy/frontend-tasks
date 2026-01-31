@@ -1,0 +1,49 @@
+<div id="wrapper">
+  <h1 id="title">HTTP Request Demo</h1>
+
+  <!-- GET SECTION -->
+  <div class="section section-get">
+    <h2>GET Request</h2>
+    <input 
+      type="number" 
+      placeholder="Enter Post ID (1-100)"
+      [(ngModel)]="postId"
+    />
+    <div class="btn-container">
+      <button class="btn-get" (click)="getSinglePost()">Get Post</button>
+      <button class="btn-get-all" (click)="getAllPosts()">Get All Posts</button>
+    </div>
+  </div>
+
+  <!-- POST SECTION -->
+  <div class="section section-post">
+    <h2>POST Request</h2>
+    <input 
+      type="text" 
+      placeholder="Enter post title"
+      [(ngModel)]="newPost.title"
+    />
+    <textarea 
+      placeholder="Enter post body"
+      [(ngModel)]="newPost.body"
+    ></textarea>
+    <button class="btn-post" (click)="createPost()">Create Post</button>
+  </div>
+
+  <!-- DELETE SECTION -->
+  <div class="section section-delete">
+    <h2>DELETE Request</h2>
+    <input 
+      type="number" 
+      placeholder="Enter Post ID to delete"
+      [(ngModel)]="deleteId"
+    />
+    <button class="btn-delete" (click)="deletePost()">Delete Post</button>
+  </div>
+
+  <!-- RESPONSE SECTION -->
+  <div class="section section-response">
+    <h2>Response</h2>
+    <pre id="responseBox">{{ response }}</pre>
+  </div>
+</div>
